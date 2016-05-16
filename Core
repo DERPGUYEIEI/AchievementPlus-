@@ -1,0 +1,87 @@
+package derpy.unicorn.core;
+
+import org.bukkit.Achievement;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerAchievementAwardedEvent;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import com.gmail.filoghost.holograms.api.HolographicDisplaysAPI;
+
+import derpy.unicorn.achievements.AchievementsEvent;
+
+@SuppressWarnings("deprecation")
+public class Core extends JavaPlugin implements Listener {
+	
+	public void onEnable(){
+		
+		PluginManager pm = Bukkit.getServer().getPluginManager();
+		
+		pm.registerEvents(new AchievementsEvent(), this);
+		
+		pm.registerEvents(this, this);
+		
+		ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+		
+		console.sendMessage(ChatColor.GRAY + "=-=-!-=-=");
+		
+		console.sendMessage(ChatColor.AQUA + "You've Enabled AchievementPlus");
+		
+		console.sendMessage(ChatColor.AQUA + "@Author DERPG_UY !");
+		
+		console.sendMessage(ChatColor.GRAY + "=-=-=-=-=");
+		
+	}
+	
+	@EventHandler
+	
+	public void onPlayerAwardAchievement(PlayerAchievementAwardedEvent e){
+		
+		Player p = e.getPlayer();
+		
+		Achievement a = e.getAchievement();
+		
+		if(a == Achievement.MINE_WOOD){
+			HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0) , (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Mine Wood" + ChatColor.YELLOW + " Here !"));
+		}
+		
+		if(a == Achievement.BAKE_CAKE){
+			HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0) , (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Bake Cake" + ChatColor.YELLOW + " Here !"));
+		}
+		
+		if(a == Achievement.BUILD_PICKAXE){
+			HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0) , (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Build Pickaxe" + ChatColor.YELLOW + " Here !"));
+		}
+		
+		if(a == Achievement.BUILD_HOE){
+			HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0) , (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Build Hoe" + ChatColor.YELLOW + " Here !"));
+		}
+		
+		if(a == Achievement.BUILD_SWORD){
+		
+		HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0) , (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Build Sword" + ChatColor.YELLOW + " Here !"));
+		
+		}
+		
+		if(a == Achievement.BUILD_WORKBENCH){
+			
+			HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0), (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Build Workbench" + ChatColor.YELLOW + " Here !"));
+		}
+		
+		if(a == Achievement.BUILD_FURNACE){
+			
+			HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0) , (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Build Furnace" + ChatColor.YELLOW + " Here !"));
+		}
+		
+		if(a == Achievement.BUILD_BETTER_PICKAXE){
+			
+			HolographicDisplaysAPI.createHologram(this, p.getLocation().add(0 , 5 , 0) , (ChatColor.AQUA + "" + p.getName() + ChatColor.YELLOW + " Has Achieve " + ChatColor.AQUA + "Build Better Pickaxe" + ChatColor.YELLOW + " Here !"));
+		}
+	}
+
+}
