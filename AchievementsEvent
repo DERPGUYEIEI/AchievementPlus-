@@ -1,0 +1,158 @@
+package derpy.unicorn.achievements;
+
+import org.bukkit.Achievement;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.inventory.CraftItemEvent;
+
+public class AchievementsEvent implements Listener {
+	
+	@EventHandler
+	
+	public void onPlayerBreakBlock(BlockBreakEvent e){
+		
+		Player p = e.getPlayer();
+		
+		Block b = e.getBlock();
+		
+		if(b.getType() == Material.WOOD){
+			
+			if(!p.hasAchievement(Achievement.OPEN_INVENTORY)){
+				
+				p.sendMessage(ChatColor.GRAY + "You Must Achieve Open Inventory Achievement !");
+				
+				e.setCancelled(true);
+				
+			}
+			
+		}
+		
+			if(b.getType() == Material.STONE){
+			
+				if(!p.hasAchievement(Achievement.BUILD_PICKAXE)){
+				
+					p.sendMessage(ChatColor.GRAY + "You Must Achieve Build Pickaxe Achievement !");
+				
+					e.setCancelled(true);
+				}
+			
+			}	
+			
+				if(b.getType() == Material.IRON_ORE){
+					
+					if(!p.hasAchievement(Achievement.BUILD_BETTER_PICKAXE)){
+						
+						p.sendMessage(ChatColor.GRAY + "You Must Achieve Build Better Pickaxe Achievement !");
+						
+						e.setCancelled(true);
+						
+					}
+					
+				}
+				
+					if(b.getType() == Material.DIAMOND_ORE){
+						
+						if(!p.hasAchievement(Achievement.ACQUIRE_IRON)){
+							
+							p.sendMessage(ChatColor.GRAY + "You Must Achieve Acquire Iron Achievement !");
+							
+							e.setCancelled(true);
+							
+						}
+						
+					}	
+					
+					if(b.getType() == Material.OBSIDIAN){
+						
+						if(!p.hasAchievement(Achievement.GET_DIAMONDS)){
+							
+							p.sendMessage(ChatColor.GRAY + "You Must Achieve Diamonds Achievement !");
+							
+							e.setCancelled(true);
+							
+						}
+						
+					}
+					
+						
+		
+	}
+	
+	@EventHandler
+	public void onItemCrafted(CraftItemEvent event) {
+		 
+	    HumanEntity entity = event.getWhoClicked();
+	    if(entity == null || !(entity instanceof Player)) return;
+	   
+	    Player p = (Player)entity;
+	 
+	    if(!p.hasAchievement(Achievement.MINE_WOOD)){
+	    
+	    if(event.getRecipe().getResult().getType() == Material.WORKBENCH) {          
+	     
+	    	event.setCancelled(true);
+	    	
+	    	p.sendMessage(ChatColor.GRAY + "You Must Achieve Mine Wood Achievement !");
+	    	
+	    }
+	    }
+	    
+	    if(!p.hasAchievement(Achievement.BUILD_PICKAXE)){
+	    	
+	    	if(event.getRecipe().getResult().getType() == Material.FURNACE){
+	    		
+	    		event.setCancelled(true);
+	    		
+	    		p.sendMessage(ChatColor.GRAY + "You Must Achieve Build Pickaxe Achievement !");
+	    		
+	    	}
+	    	
+	    }
+	    
+	    if(!p.hasAchievement(Achievement.BUILD_HOE)){
+	    	
+	    	if(event.getRecipe().getResult().getType() == Material.BREAD){
+	    		
+	    		event.setCancelled(true);
+	    		
+	    		p.sendMessage(ChatColor.GRAY + "You Must Achieve Build Hoe Achievement !");
+	    		
+	    	}
+	    	
+	    }
+	    
+	    if(!p.hasAchievement(Achievement.GET_DIAMONDS)){
+	    	
+	    	if(event.getRecipe().getResult().getType() == Material.ENCHANTMENT_TABLE){
+	    		
+	    		event.setCancelled(true);
+	    		
+	    		p.sendMessage(ChatColor.GRAY + "You Must Achieve Get Diamonds Achievement !");
+	    	
+	    	}
+	    	
+	    }
+	    
+	    if(!p.hasAchievement(Achievement.NETHER_PORTAL)){
+	    	
+	    	if(event.getRecipe().getResult().getType() == Material.BLAZE_POWDER){
+	    		
+	    		event.setCancelled(true);
+	    		
+	    		p.sendMessage(ChatColor.GRAY + "You Must Achieve Went Into Nether Portal Achievement !");
+	    		
+	    	}
+	    	
+	    }
+	    
+	}
+
+	   		
+	}
+
